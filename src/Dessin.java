@@ -106,32 +106,4 @@ public class Dessin extends JPanel implements MouseMotionListener, MouseListener
     public void mouseMoved(MouseEvent e){
 
     }
-
-    //Les methodes Exporter et Importer
-    public void Exporter(){
-        try {
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("donnees/Dessins.bin"));
-            objectOutputStream.writeInt(liste.size());
-            for (Figure F : liste) objectOutputStream.writeObject(liste);
-            objectOutputStream.close();
-        }catch(Exception err){
-            err.printStackTrace();
-        }
-
-    }
-
-    public void Importer() {
-        try {
-            ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("donnees/Dessins.bin"));
-            liste.clear();
-            int nombre = objectInputStream.readInt();
-            for (int i = 0; i < nombre; i++) {
-                liste.add((Figure) objectInputStream.readObject());
-            }
-            objectInputStream.close();
-            repaint();
-        } catch (Exception err) {
-            err.printStackTrace();
-        }
-    }
 }

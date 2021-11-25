@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*; //*comme ActionListener
 
 
-// La classe fenetre herite de JFrame//
+// La classe fenetre hérite de JFrame//
 public class Fenetre extends JFrame  implements ActionListener { //Classe Fenêtre implémente l'interface ActionListener//
 
     private Dessin monDessin;
@@ -52,18 +52,6 @@ public class Fenetre extends JFrame  implements ActionListener { //Classe Fenêt
         Auteurs.addActionListener(this);
         menu2.add(Auteurs);
         m.add(menu2);
-        //Creation d'un menu Â« Exporter/Importer Â»
-        // Bare de Menu "Exporter|Importer"//
-        JMenu menu3 =new JMenu("Exporter|Importer");
-        // sous-menus :Importer
-        JMenuItem Importer = new JMenuItem("Importer");
-        Auteurs.addActionListener(this);
-        menu3.add(Importer);
-        // sous-menus :Exporter
-        JMenuItem Exporter = new JMenuItem("Exporter");
-        Auteurs.addActionListener(this);
-        menu3.add(Exporter);
-        m.add(menu3);
         setJMenuBar(m);
 
         //raccourci Ctrl+S
@@ -145,7 +133,7 @@ public class Fenetre extends JFrame  implements ActionListener { //Classe Fenêt
         //BorderLayout//
 
         contentPane.add(panneau,"South");
-        //on remplace dans ce constructeur la zone de texte du centre par membre(dessin) instancie //
+        //on remplace dans ce constructeur la zone de texte du centre par dessin et instancier //
         monDessin = new Dessin();
         contentPane.add(monDessin,"Center");
 
@@ -157,18 +145,14 @@ public class Fenetre extends JFrame  implements ActionListener { //Classe Fenêt
 
         if(cmd.equals("Nouveau"))          { System.out.println("tu as appuye sur " + cmd);
             monDessin.getliste().clear();
-            repaint(); } // Interface d'ecoute: Question 13
+            repaint(); }
         else if(cmd.equals("Fichier"))     { System.out.println("tu as appuye sur "+ cmd);}
         else if(cmd.equals("Ouvrir"))      { System.out.println("tu as appuye sur " + cmd); }
         else if(cmd.equals("Enregistrer")) { System.out.println("tu as appuye sur " + cmd); }
         else if(cmd.equals("Quitter"))     { System.exit(0); }
         else if(cmd.equals("Auteurs"))     { System.out.println("tu as appuye sur " + cmd);
-            JOptionPane Author = new JOptionPane();// Interface d'ecoute: la derniere question //
+            JOptionPane Author = new JOptionPane();
             Author.showMessageDialog( new Frame(), " L'auteur est Rokhaya SOUMARE", "Author", JOptionPane.PLAIN_MESSAGE);}
-        else if(cmd.equals("Importer"))    { System.out.println("tu as appuye sur "+ cmd);
-            monDessin.Importer();}
-        else if(cmd.equals("Exporter"))    { System.out.println("tu as appuye sur "+ cmd);
-            monDessin.Exporter();}
         else if(cmd.equals("Noir"))        { System.out.println("tu as appuye sur " + cmd);
             monDessin.setColor(Color.black);}
         else if(cmd.equals("Rouge"))       { System.out.println("tu as appuye sur " + cmd);
